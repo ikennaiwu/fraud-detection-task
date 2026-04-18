@@ -1,27 +1,46 @@
 const socket = io();
-const feed = document.getElementById("feed");
+
+const tbody = document.getElementById("tbody");
+
+let total = 0;
+let validCount = 0;
+let invalidCount = 0;
+const sendersSet = new Set();
 
 socket.on("update", (data) => {
   const { transaction, invalid, reasons } = data;
 
-  // create list item
-  const li = document.createElement("li");
+  total++;
+  sendersSet.add(transaction.sender);
 
-  // convert timestamp to readable date
-  const date = new Date(transaction.timestamp * 1000);
-  const readable = date.toLocaleString();
-
-  // build text
-  li.textContent =
-    `${transaction.id} | ${transaction.sender} → ${transaction.receiver} | ${transaction.amount} | ${readable}`;
-
-  // style based on fraud status
   if (invalid) {
-    li.textContent += ` (${reasons.join(", ")})`;
-    li.style.color = "red";
+    invalidCount++;
   } else {
-    li.style.color = "green";
+    validCount++;
   }
 
-  feed.prepend(li);
+  // update summary
+  document.getElementById("total").textContent = total;
+  document.getElementById("valid").textContent = validCount;
+  document.getElementById("invalid").textContent = invalidCount;
+  document.getElementById("senders").textContent = sendersSet.size;
+
+  // create row
+  const row = document.createElement("tr");
+
+  const date = new Date(transaction.timestamp * 1000);
+  const seconds = date.getSeconds() + "s";
+
+  row.innerHTML = `
+    <td>${transaction.id}</td>
+    <td>${transaction.sender}</td>
+    <td>${transaction.receiver}</td>
+    <td>${transaction.amount}</td>
+    <td>${seconds}</td>
+    <td class="${invalid ? "invalid" : "valid"}">
+      ${invalid ? "Invalid - " + reasons.join(", ") : "Valid"}
+    </td>
+  `;
+
+  tbody.prepend(row);
 });
