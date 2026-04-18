@@ -58,25 +58,6 @@ Even though the system is implemented in Node.js, I simulated real-world compone
 - Socket.io (WebSockets)
 - Vanilla JavaScript (Frontend)
 
-
-#  Project Structure
-fraud-detection-system/
-│
-├── src/
-│ ├── engine/ 
-│ ├── state/ 
-│ ├── stream/ 
-│ └── utils/ 
-│
-├── public/
-│ ├── index.html 
-│ └── script.js 
-│
-├── server.js 
-├── test.js 
-└── README.md
-
-
 #  Core Logic Explanation
 
 ## 1. Basic Validation
