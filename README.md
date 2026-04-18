@@ -60,7 +60,6 @@ Even though the system is implemented in Node.js, I simulated real-world compone
 
 
 #  Project Structure
-
 fraud-detection-system/
 │
 ├── src/
@@ -78,7 +77,7 @@ fraud-detection-system/
 └── README.md
 
 
-# 🔍 Core Logic Explanation
+#  Core Logic Explanation
 
 ## 1. Basic Validation
 Each transaction is checked for:
@@ -114,7 +113,7 @@ The system includes a real-time dashboard that displays:
 
 ### Example Output:
 \
-t4mgxt4 | B → X | 254 | 4/18/2026 ❌ (chain_fraud)
+t4mgxt4 | B → X | 254 | 4/18/2026  (chain_fraud)
 tae9k2p | A → Z | 120 | 4/18/2026
 
 -  Green = valid transaction  
@@ -129,32 +128,31 @@ I created a `test.js` file to:
 - validate fraud rules
 - verify velocity and chain fraud logic
 
----
+
 
 #  How to Run the Project
 
 ### 1. Install dependencies
-```bash
-npm install -y
-npm install express io-socket
+-npm install -y
+-npm install express socket.io
 
 ### 2. Start server
-npm start
+-npm start
 
-###. Open dashboard
+### 3. Open dashboard
 http://localhost:3000
 
-📸 Output Screenshot
+ ### . Output Screenshot
 
 The dashboard shows real-time fraud detection with color-coded transactions:
 
-🟢 Valid transactions
-🔴 Fraudulent transactions
-❌ Reason for failure displayed
+ Valid transactions
+ Fraudulent transactions
+ Reason for failure displayed
 
 (Insert screenshot here: assets/dashboard.png)
 
-###. Key Learnings
+### . Key Learnings
 
 Through this project, I learned:
 
@@ -165,7 +163,7 @@ How real-time systems use WebSockets for live updates
 How systems like Kafka, Redis, and streaming pipelines work conceptually
 
 
-###. Final Thoughts
+### . Final Thoughts
 
 This project is not just an algorithm solution — it simulates a real-world fraud detection architecture used in payment systems.
 
@@ -175,7 +173,7 @@ System design thinking
 Real-time data processing
 Scalable architecture concepts
 
-###. Author
+### . Author
 
 Built as part of a backend/system design exercise focused on real-time fraud detection systems.
 
