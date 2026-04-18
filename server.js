@@ -2,37 +2,22 @@ const express = require("express");
 const http = require("http");
 const { Server } = require("socket.io");
 
-const { processTransaction } = require("./src/engine/fraudEngine");
-const { generateTransaction } = require("./src/stream/generator");
-
 const app = express();
-
-const PORT = process.env.PORT || 3000;
-
-app.use(express.static("public"));
-
 const server = http.createServer(app);
 const io = new Server(server);
 
-const seenIds = new Set();
+// port configuration
+const PORT = process.env.PORT || 3000;
 
-io.on("connection", () => {
+// serve frontend
+app.use(express.static("public"));
+
+// socket connection
+io.on("connection", (socket) => {
   console.log("Client connected");
 });
 
-// STREAM SIMULATION
-setInterval(() => {
-  const tx = generateTransaction();
-
-  const result = processTransaction(tx, seenIds);
-
-  io.emit("update", {
-    transaction: tx,
-    invalid: result.invalid,
-    reasons: result.reasons,
-  });
-}, 2000);
-
-server.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+// start server
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
