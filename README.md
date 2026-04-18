@@ -1,5 +1,10 @@
 #  Fraud Detection System (Real-Time Simulation)
 
+##  Live Dashboard Screenshot
+
+![Fraud Dashboard](./assets/fraud-detection-live.png)
+
+
 A lightweight real-time fraud detection system built with Node.js that identifies fraudulent transactions using **basic validation rules, velocity limits, and chain fraud propagation**, while streaming results to a live dashboard using WebSockets.
 
 #  Problem Statement
