@@ -63,17 +63,17 @@ Even though the system is implemented in Node.js, I simulated real-world compone
 fraud-detection-system/
 │
 ├── src/
-│ ├── engine/ # Fraud detection logic
-│ ├── state/ # In-memory state (Redis simulation)
-│ ├── stream/ # Transaction generator (Kafka simulation)
-│ └── utils/ # Validation rules
+│ ├── engine/ 
+│ ├── state/ 
+│ ├── stream/ 
+│ └── utils/ 
 │
 ├── public/
-│ ├── index.html # Dashboard UI
-│ └── script.js # Frontend logic
+│ ├── index.html 
+│ └── script.js 
 │
-├── server.js # Express + WebSocket server
-├── test.js # Manual test cases
+├── server.js 
+├── test.js 
 └── README.md
 
 
