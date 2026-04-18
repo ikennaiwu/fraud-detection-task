@@ -8,6 +8,8 @@ let invalidCount = 0;
 const sendersSet = new Set();
 
 socket.on("update", (data) => {
+  console.log("DATA RECEIVED:", data);  
+
   const { transaction, invalid, reasons } = data;
 
   total++;
